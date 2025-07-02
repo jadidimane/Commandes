@@ -1,0 +1,11 @@
+EAN;Produit;PCB;TVA;Fournisseur;Prix d'achat facture SAIDA;Prix d'achat rendu dans GOLD;Quantité de cartons achetés par RH Trading à SAIDA;Quantité de cartons réceptionnés par Tamponet;Quantité de cartons pour RH Vitrolles;Quantité de cartons pour RH Bonneveine;Quantité de cartons pour RH Grand Littoral;Quantité de cartons pour Nouveau client Carrefour Toulon;Prix de vente RH Vitrolles;Prix de vente RH Bonneveine;Prix de vente RH Grand Littoral;Quantité de cartons réceptionnés par RH Vitrolles;Quantité de cartons réceptionnés par RH Bonneveine;Quantité de cartons réceptionnés par RH Grand Littoral;Quantité de cartons réceptionnés par Nouveau client Carrefour Toulon
+6194008533999;SABLITO 128 GR/24 chocolat;24;5,50%;Saida;0,27;0,29;64;64;32;0;32;0;0,36;0,38;0,36;32;0;32;0
+6194008534019;MAJOR CHOCOLAT 175G / 20;20;5,50%;Saida;0,33;0,35;80;80;20;20;20;20;0,44;0,46;0,44;20;20;20;20
+6194008534040;MAJOR FRAISE 175G / 20;20;5,50%;Saida;0,33;0,35;80;80;20;20;20;20;0,44;0,46;0,44;20;20;20;20
+6194008553461;MAJOR CACAOTÉ AU LAIT 175G / 20;20;5,50%;Saida;0,33;0,35;80;80;20;20;20;20;0,44;0,46;0,44;20;20;20;0
+6194008552037;GRP BREAK CHOCOLAT 4X35G;24;5,50%;Saida;0,4;0,42;68;68;17;17;17;17;0,52;0,55;0,52;17;17;17;17
+6194008552020;GRP BREAK VANILLE 4X35G;24;5,50%;Saida;0,41;0,43;34;34;17;0;17;0;0,54;0,57;0,54;17;0;17;0
+6194008541147;GROUPAGE CROUSTINA  NOISETTE 25X6X33G;25;5,50%;Saida;0,46;0,48;80;80;20;20;20;20;0,6;0,63;0,6;20;20;20;20
+6194008555281;COOKIES 136 GR CACAO;12;5,50%;Saida;0,51;0,53;40;40;20;0;20;0;0,67;0,71;0,67;20;0;20;0
+6194008555281;COOKIES 136 GR CACAO;12;5,50%;Saida;0,51;0,53;40;40;20;0;20;0;0,67;0,71;0,67;20;0;20;0
+

@@ -1,0 +1,76 @@
+package pages;
+
+import com.codeborne.selenide.ElementsCollection;
+import com.opencsv.exceptions.CsvValidationException;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.WebElement;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
+import static utility.Excel.map;
+
+public class DetailCommandPage extends BasePage {
+    private By quantityInput=By.xpath("//*[@id=\"gridQuantityDistribPerSite\"]/div/div[2]/div[2]/div[3]/div[2]/div/div/div[1]");
+    private By validateButton = By.id("srtoolbartransaction-validate-button");
+    private By saveButton = By.id("srtoolbartransaction-save-button");
+    private By valueOrderButton = By.xpath("//span[text()='Valoriser']");
+    private By sendOrderButton = By.xpath("//span[text()='Envoyer']");
+    private By OK= By.xpath("/html/body/div[9]/div/div[2]/div/div[3]/button/span[2]/span");
+    //    private By PRGeneratorButton = By.xpath("//span[text()='Editer']");
+    public void setOrderPUQuantity() throws IOException, InterruptedException, CsvValidationException {
+        int i=1;
+        for(List<String> quantity: map().values()){
+            WebElement element1 = $(By.xpath("//div[@name='left']/div["+i+"]/div[4]/span/span[2]/span"));
+            $(element1).click();
+            int compid=Integer.parseInt($(quantityInput).getAttribute("comp-id"));
+            for(int q=0; q<quantity.size(); q++){
+                if(!quantity.get(q).equals("0")){
+
+                    $(By.xpath("//div[@comp-id='" + (compid+q) + "']/div[3]")).sendKeys(Keys.DELETE);
+                    $(By.xpath("//div[@comp-id='" + (compid+q) + "']/div[3]//input")).sendKeys(quantity.get(q)+ Keys.ENTER);
+                }}
+            WebElement element = $(By.xpath("//div[@name='left']/div[" + i + "]/div[4]/span/span[1]/span"));
+            $(element).click();
+            i++;
+        }
+
+    }
+    public void saveOrder(){
+        $(this.saveButton).click();
+      $(OK).click();
+    }
+
+    public void valueOrder(){
+        $(this.valueOrderButton).click();
+        $(OK).click();
+    }
+
+    public void sendOrder() throws InterruptedException {
+        $(this.sendOrderButton).click();
+        Thread.sleep(2000);
+        $(By.xpath("/html/body/div[10]/div/div[2]/div/div[4]/button[2]/span[2]")).click();
+    }
+
+    public void validateOrder(){
+        $(this.validateButton).click();
+    }
+
+    public void sendAndValidate() throws InterruptedException, CsvValidationException, IOException {
+        this.setOrderPUQuantity();
+        this.saveOrder();
+        this.valueOrder();
+        this.sendOrder();
+        Thread.sleep(5000);
+    }
+
+
+
+}
