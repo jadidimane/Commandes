@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: 'master',
-                    url: 'https://github.com/jadidimane/CommandesFluxSemiDirect.git'
+                    url: 'https://github.com/jadidimane/Commandes.git'
             }
         }
 
