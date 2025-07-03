@@ -131,7 +131,12 @@ public class OrderCreationPage extends BasePage {
         $(validationButton).click();
     }
     public void is_popup_visible(){
-        Assert.assertTrue($(popup).isDisplayed());
+       String displayValue = $(popup).getCssValue("display");
+       if (!"none".equals(displayValue)){
+           Assert.assertEquals("Veuillez corriger toutes les erreurs avant d'enregistrer", $(popup).getText(), "the messages are not the same");
+        } else{
+           Assert.fail();
+       }
     }
     public void invalid_supplier(String supplierName) throws InterruptedException, CsvValidationException, IOException {
         $(supplierField).sendKeys(supplierName + Keys.ENTER);
