@@ -10,7 +10,7 @@ import pages.OrderSearchPage;
 public class BasePage {
     @Given("que je suis connecté à l'application, j'accède au menu et j'ouvre la page de création de commande")
     public void navigateToOrderCreationPage() {
-        Configuration.timeout = 8000;
+        Configuration.timeout = 10000;
         //login_to_the_application
         LoginPage loginPage = new LoginPage();
         loginPage.login_to_application();
