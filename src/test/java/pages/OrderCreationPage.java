@@ -72,16 +72,11 @@ public class OrderCreationPage extends BasePage {
                 Thread.sleep(500);
                 $(champNomSite).sendKeys(clientsite);
                 Thread.sleep(600);
-                idqvs1=Integer.parseInt($(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id").split("_")[1]);
-                    $(By.id("qvs_"+idqvs1)).click();
-
+                selectMenuItem();
                 Thread.sleep(1000);
-                System.out.println("i am typing h0 ");
                 $(champScope).sendKeys("H0");
                 Thread.sleep(900);
-                String id=$(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
-                idqvs2=Integer.parseInt(id.split("_")[1]);
-                Thread.sleep(900);
+                selectMenuItem();
                 $(By.id("qvs_"+idqvs2)).click();
                 $(By.xpath("//div[@comp-id='" + (suite + 9) + "']")).click();
                 By sitePoids = By.xpath("(//div[@class='ag-center-cols-container'])[4]/div["+(i+1)+"]/div[3]//input");
