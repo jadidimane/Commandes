@@ -131,7 +131,8 @@ public class OrderCreationPage extends BasePage {
         $(validationButton).click();
     }
     public void is_popup_visible(){
-        Assert.assertEquals("Veuillez corriger toutes les erreurs avant d'enregistrer", "the messages are not the same",$(popup).getText());
+        String pop=$(popup).getText();
+        Assert.assertEquals($(popup).getText(),"Veuillez corriger toutes les erreurs avant d'enregistrer");
 
     }
     public void invalid_supplier(String supplierName) throws InterruptedException, CsvValidationException, IOException {
