@@ -17,25 +17,25 @@ Feature: Création d'une commande
     And je répartis la commande sur les sites et je clique sur les boutons enregistrer , valoriser et envoyer
     Then le bon de commande est généré avec succès
 
-#  Scenario: Fournisseur inexistant
-#    When je remplis le type de valorisation
-#    And je choisis le genre de commande
-#    And je renseigne les informations d'un fournisseur inexistant
-#    And je sélectionne les sites concernés
-#    And je choisis le mode de selection par article
-#    And je renseigne les articles
-#    And je clique sur le bouton Enregistrer echec
-#    Then un popup s'affiche corriger les erreurs puis valider
-#
-#  Scenario: Fournisseur non renseigné
-#    When je remplis le type de valorisation
-#    And je choisis le genre de commande
-#    And je sélectionne les sites concernés
-#    And je choisis le mode de selection par article
-#    And je renseigne les articles
-#    And je clique sur le bouton Enregistrer echec
-#    Then un popup s'affiche corriger les erreurs puis valider
-#
+  Scenario: Fournisseur inexistant
+    When je remplis le type de valorisation
+    And je choisis le genre de commande
+    And je renseigne les informations d'un fournisseur inexistant
+    And je sélectionne les sites concernés
+    And je choisis le mode de selection par article
+    And je renseigne les articles
+    And je clique sur le bouton Enregistrer echec
+    Then un popup s'affiche corriger les erreurs puis valider
+
+  Scenario: Fournisseur non renseigné
+    When je remplis le type de valorisation
+    And je choisis le genre de commande
+    And je sélectionne les sites concernés
+    And je choisis le mode de selection par article
+    And je renseigne les articles
+    And je clique sur le bouton Enregistrer echec
+    Then un popup s'affiche corriger les erreurs puis valider
+
 #  Scenario: Fournisseur non disponible à la date de collecte renseignée
 #    When je remplis le type de valorisation
 #    And je choisis le genre de commande
