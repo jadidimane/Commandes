@@ -37,6 +37,7 @@ public class OrderCreationPage extends BasePage {
     public void renseigner_le_type_de_valorisation() throws InterruptedException {
         $(typeValo).sendKeys("prix");
         Thread.sleep(2000);
+        selectMenuItem();
 
     }
     public void renseigner_le_genre_de_commande(){
@@ -46,8 +47,7 @@ public class OrderCreationPage extends BasePage {
     }
     public void renseigner_les_informations_du_fournisseur(String supplierName) throws InterruptedException {
             $(supplierField).sendKeys(supplierName);
-            Thread.sleep(500);
-            $(By.className("q-virtual-scroll__content")).click();
+            $(By.id("qvs_32")).click();
     }
     public void renseigner_les_sites(List<String> sites) throws InterruptedException {
             int idqvs1=0;
