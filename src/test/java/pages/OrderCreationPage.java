@@ -77,7 +77,6 @@ public class OrderCreationPage extends BasePage {
                 $(champScope).sendKeys("H0");
                 Thread.sleep(900);
                 selectMenuItem();
-                $(By.id("qvs_"+idqvs2)).click();
                 $(By.xpath("//div[@comp-id='" + (suite + 9) + "']")).click();
                 By sitePoids = By.xpath("(//div[@class='ag-center-cols-container'])[4]/div["+(i+1)+"]/div[3]//input");
                 $(sitePoids).click();
