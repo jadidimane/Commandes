@@ -7,7 +7,7 @@ import org.openqa.selenium.Keys;
 import java.io.IOException;
 import java.util.List;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
+import org.junit.Assert;
 import static com.codeborne.selenide.Selenide.$;
 import static utility.Excel.extractEANCodes;
 
@@ -137,9 +137,8 @@ public class OrderCreationPage extends BasePage {
     public void SetValidationButton() {
         $(validationButton).click();
     }
-    public boolean is_popup_visible(){
-        $(popup).getText();
-        return $(popup).isDisplayed();
+    public void is_popup_visible(){
+        Assert.assertTrue($(popup).isDisplayed());
     }
     public void invalid_supplier(String supplierName) throws InterruptedException, CsvValidationException, IOException {
         $(supplierField).sendKeys(supplierName + Keys.ENTER);
@@ -151,8 +150,8 @@ public class OrderCreationPage extends BasePage {
         $(dateCollecte).sendKeys("01/07/2025");
         Thread.sleep(500);
     }
-    public boolean is_Dialog_Message_enabled(){
-       return $(DialogMessage).isDisplayed();
+    public void is_Dialog_Message_enabled(){
+        Assert.assertTrue($(DialogMessage).isDisplayed());
     }
     public void ArticleManquant(List<String> articles) throws InterruptedException, CsvValidationException, IOException {
         $(articlesPanel).scrollIntoView(true);
