@@ -1,13 +1,18 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import com.opencsv.exceptions.CsvValidationException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.junit.Assert;
+
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selenide.$;
 import static utility.Excel.extractEANCodes;
 
@@ -28,11 +33,10 @@ public class OrderCreationPage extends BasePage {
     private By DialogMessage=By.xpath("/html/body/div[8]/div/div[2]/div/div[2]");
     private By listArticle=By.xpath("//div[@class='ag-center-cols-container']//input");
     public void selectMenuItem(){
-        int idqvs2=0;
-        String id=$(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
-        idqvs2=Integer.parseInt(id.split("_")[1]);
-        System.out.println(idqvs2);
-        $(By.id("qvs_"+idqvs2)).click();
+        SelenideElement menuItem = $(By.xpath("//div[contains(@id, 'qvs')]")).should(exist);
+        String id = menuItem.getAttribute("id");
+        int idqvs2 = Integer.parseInt(id.split("_")[1]);
+        menuItem.click();
     }
     public void renseigner_le_type_de_valorisation() throws InterruptedException {
         $(typeValo).sendKeys("prix");
@@ -50,8 +54,6 @@ public class OrderCreationPage extends BasePage {
             $(By.id("qvs_32")).click();
     }
     public void renseigner_les_sites(List<String> sites) throws InterruptedException {
-            int idqvs1=0;
-            int idqvs2=0;
             String compid = "0";
             int suite=0;
             int i=0;
@@ -69,16 +71,12 @@ public class OrderCreationPage extends BasePage {
                 }
                 By champNomSite = By.xpath("//div[@comp-id='" + (suite + 7) + "']");
                 By champScope = By.xpath("//div[@comp-id='" + (suite + 8) + "']");
-                Thread.sleep(500);
+                By sitePoids = By.xpath("(//div[@class='ag-center-cols-container'])[4]/div["+(i+1)+"]/div[3]//input");
                 $(champNomSite).sendKeys(clientsite);
-                Thread.sleep(1000);
                 selectMenuItem();
-                Thread.sleep(1000);
                 $(champScope).sendKeys("H0");
-                Thread.sleep(1000);
                 selectMenuItem();
                 $(By.xpath("//div[@comp-id='" + (suite + 9) + "']")).click();
-                By sitePoids = By.xpath("(//div[@class='ag-center-cols-container'])[4]/div["+(i+1)+"]/div[3]//input");
                 $(sitePoids).click();
                 $(sitePoids).sendKeys("1");
 
@@ -90,16 +88,19 @@ public class OrderCreationPage extends BasePage {
     public void renseigner_les_articles(List<String> codes) throws CsvValidationException, IOException, InterruptedException, CsvValidationException {
         $(articlesPanel).scrollIntoView(true);
         for (int i = 0; i < codes.size(); i++) {
-            $(By.id("articleGrid-srgridtoolbar-add-button")).scrollIntoView(true);
-            $(By.id("articleGrid-srgridtoolbar-add-button")).click();
+            SelenideElement addButton = $(By.id("articleGrid-srgridtoolbar-add-button"))
+                    .shouldBe(Condition.visible, Duration.ofSeconds(10))
+                    .shouldBe(Condition.enabled);
+
+            addButton.scrollIntoView(true).click();
             By codeDivField = By.xpath("//div[@class='ag-center-cols-container'][1]/div["+(i+1)+"]/div[1]");
-            $(codeDivField).scrollIntoView(true);
-            $(codeDivField).click();
+            $(codeDivField).shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
             By codeInputField = By.xpath("//div[@class='ag-center-cols-container'][1]/div["+(i+1)+"]/div[1]//input");
-            $(codeInputField).sendKeys(codes.get(i) + Keys.TAB);
+            $(codeInputField).shouldBe(Condition.visible).sendKeys(codes.get(i), Keys.TAB);
         }
-        $(By.xpath("//*[@id=\"articleGrid\"]/div/div[2]/div[2]/div[1]/div[1]/div/div[3]/div[2]/div[2]")).click();
-    }
+        $(By.xpath("//*[@id=\"articleGrid\"]/div/div[2]/div[2]/div[1]/div[1]/div/div[3]/div[2]/div[2]"))
+                .shouldBe(Condition.visible)
+                .click(); }
     public void choisir_le_mode_de_selection_par_article(String selectionMode) throws InterruptedException {
         int idqvs2=0;
         $(articlesPanel).scrollIntoView(true);
