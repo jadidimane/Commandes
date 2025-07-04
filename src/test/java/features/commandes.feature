@@ -132,4 +132,4 @@ Feature: Création d'une commande
     And je sélectionne les sites concernés
     And je choisis le mode de selection par liste d’articles
     And je clique sur le bouton Enregistrer
-    Then une boite de dialogue s'affiche
+    Then une boite de dialogue s'affiche Vous devez saisir au moins une liste d'articles.

@@ -90,6 +90,7 @@ public class OrderCreationPage extends BasePage {
     public void renseigner_les_articles(List<String> codes) throws CsvValidationException, IOException, InterruptedException, CsvValidationException {
         $(articlesPanel).scrollIntoView(true);
         for (int i = 0; i < codes.size(); i++) {
+            $(By.id("articleGrid-srgridtoolbar-add-button")).scrollIntoView(true);
             $(By.id("articleGrid-srgridtoolbar-add-button")).click();
             By codeDivField = By.xpath("//div[@class='ag-center-cols-container'][1]/div["+(i+1)+"]/div[1]");
             $(codeDivField).scrollIntoView(true);
@@ -145,9 +146,13 @@ public class OrderCreationPage extends BasePage {
         $(dateCollecte).sendKeys("01/07/2025");
         Thread.sleep(500);
     }
-    public void is_Dialog_Message_enabled(){
+    public void is_Dialog_Message_enabled_Aucun_Article(){
         String s=$(DialogMessage).getText();
         Assert.assertEquals(s,"Vous devez saisir au moins un article.");
+    }
+    public void is_Dialog_Message_enabled_Aucune_Liste_Article(){
+        String s=$(DialogMessage).getText();
+        Assert.assertEquals(s,"Vous devez saisir au moins une liste d'articles.");
     }
     public void ArticleManquant(List<String> articles) throws InterruptedException, CsvValidationException, IOException {
         $(articlesPanel).scrollIntoView(true);
