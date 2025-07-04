@@ -25,7 +25,7 @@ public class OrderCreationPage extends BasePage {
     private By validationButton= By.xpath("//*[@id=\"srtoolbartransaction-validate-button\"]/span[2]");
     private By typeValo=By.xpath("//input[@aria-label='Type valorisation']");
     private By dateCollecte=By.xpath("//input[@name='sendingDate']");
-    private By DialogMessage=By.xpath("/html/body/div[8]/div/div[2]/div/div[1]");
+    private By DialogMessage=By.xpath("/html/body/div[8]/div/div[2]/div/div[2]");
     private By listArticle=By.xpath("//div[@class='ag-center-cols-container']//input");
     public void selectMenuItem(){
         int idqvs2=0;
@@ -146,7 +146,8 @@ public class OrderCreationPage extends BasePage {
         Thread.sleep(500);
     }
     public void is_Dialog_Message_enabled(){
-        Assert.assertTrue($(DialogMessage).isDisplayed());
+        String s=$(DialogMessage).getText();
+        Assert.assertEquals(s,"Vous devez saisir au moins un article.");
     }
     public void ArticleManquant(List<String> articles) throws InterruptedException, CsvValidationException, IOException {
         $(articlesPanel).scrollIntoView(true);
