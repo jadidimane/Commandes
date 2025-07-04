@@ -71,11 +71,11 @@ public class OrderCreationPage extends BasePage {
                 By champScope = By.xpath("//div[@comp-id='" + (suite + 8) + "']");
                 Thread.sleep(500);
                 $(champNomSite).sendKeys(clientsite);
-                Thread.sleep(600);
+                Thread.sleep(1000);
                 selectMenuItem();
                 Thread.sleep(1000);
                 $(champScope).sendKeys("H0");
-                Thread.sleep(900);
+                Thread.sleep(1000);
                 selectMenuItem();
                 $(By.xpath("//div[@comp-id='" + (suite + 9) + "']")).click();
                 By sitePoids = By.xpath("(//div[@class='ag-center-cols-container'])[4]/div["+(i+1)+"]/div[3]//input");
