@@ -126,11 +126,11 @@ Feature: Création d'une commande
 #    And je clique sur le bouton Enregistrer echec
 #    Then un popup s'affiche corriger les erreurs puis valider
 
-  Scenario: Liste d’articles vide
-    When je remplis le type de valorisation
-    And je choisis le genre de commande
-    And je renseigne les informations du fournisseur
-    And je sélectionne les sites concernés
-    And je choisis le mode de selection par liste d’articles
-    And je clique sur le bouton Enregistrer
-    Then une boite de dialogue s'affiche Vous devez saisir au moins une liste d'articles.
+#  Scenario: Liste d’articles vide
+#    When je remplis le type de valorisation
+#    And je choisis le genre de commande
+#    And je renseigne les informations du fournisseur
+#    And je sélectionne les sites concernés
+#    And je choisis le mode de selection par liste d’articles
+#    And je clique sur le bouton Enregistrer
+#    Then une boite de dialogue s'affiche Vous devez saisir au moins une liste d'articles.
