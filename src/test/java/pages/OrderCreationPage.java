@@ -48,8 +48,8 @@ public class OrderCreationPage extends BasePage {
     public void renseigner_le_genre_de_commande() throws InterruptedException {
         $(ordergenre).sendKeys(Keys.CONTROL + "a");
         $(ordergenre).sendKeys(Keys.DELETE);
-        $(ordergenre).sendKeys("Semi-Direct");
-        selectMenuItem();
+        $(ordergenre).sendKeys("Semi-Direct"+Keys.ENTER);
+
     }
     public void renseigner_les_informations_du_fournisseur(String supplierName) throws InterruptedException {
             $(supplierField).sendKeys(supplierName);
