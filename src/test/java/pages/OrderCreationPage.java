@@ -45,10 +45,12 @@ public class OrderCreationPage extends BasePage {
         selectMenuItem();
 
     }
-    public void renseigner_le_genre_de_commande() throws InterruptedException {
+    public void renseigner_le_genre_de_commande(String genre) throws InterruptedException {
         $(ordergenre).sendKeys(Keys.CONTROL + "a");
         $(ordergenre).sendKeys(Keys.DELETE);
-        $(ordergenre).sendKeys("Semi-Direct"+Keys.ENTER);
+        $(ordergenre).sendKeys(genre);
+        Thread.sleep(100);
+        $(ordergenre).sendKeys(Keys.ENTER);
 
     }
     public void renseigner_les_informations_du_fournisseur(String supplierName) throws InterruptedException {
@@ -80,7 +82,7 @@ public class OrderCreationPage extends BasePage {
                 selectMenuItem();
                 Thread.sleep(1000);
                 $(champScope).sendKeys("H0");
-                Thread.sleep(900);
+                Thread.sleep(1000);
                 selectMenuItem();
                 $(By.xpath("//div[@comp-id='" + (suite + 9) + "']")).click();
                 $(sitePoids).click();
@@ -119,8 +121,8 @@ public class OrderCreationPage extends BasePage {
         detail.setDriver(getDriver());
         return detail;
     }
-    public DetailCommandPage newCommande(String selectionMode,List<String> articles,List<String> sites, String supplierName) throws InterruptedException, CsvValidationException, IOException {
-        renseigner_le_genre_de_commande();
+    public DetailCommandPage newCommande(String selectionMode,String genre,List<String> articles,List<String> sites, String supplierName) throws InterruptedException, CsvValidationException, IOException {
+        renseigner_le_genre_de_commande(genre);
         renseigner_le_type_de_valorisation();
         renseigner_les_informations_du_fournisseur(supplierName);
         choisir_le_mode_de_selection_par_article(selectionMode);

@@ -19,7 +19,7 @@ public class CommonSteps {
     }
     @And("je choisis le genre de commande")
     public void renseigner_le_genre_de_commande() throws InterruptedException {
-        order.renseigner_le_genre_de_commande();
+        order.renseigner_le_genre_de_commande("Semi-Direct");
     }
     @And("je renseigne les informations du fournisseur")
     public void renseigner_les_informations_du_fournisseur() throws InterruptedException {
