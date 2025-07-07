@@ -36,7 +36,6 @@ public class OrderCreationPage extends BasePage {
         int idqvs2=0;
         String id=$(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
         idqvs2=Integer.parseInt(id.split("_")[1]);
-        System.out.println(idqvs2);
         Thread.sleep(700);
         $(By.id("qvs_"+idqvs2)).click();
     }
@@ -139,7 +138,6 @@ public class OrderCreationPage extends BasePage {
     }
     public void invalid_supplier(String supplierName) throws InterruptedException, CsvValidationException, IOException {
         $(supplierField).sendKeys(supplierName + Keys.ENTER);
-        System.out.println(supplierName);
     }
     public void date_collecte_invalide() throws InterruptedException {
         $(dateCollecte).sendKeys(Keys.CONTROL +"a");
@@ -195,7 +193,6 @@ public class OrderCreationPage extends BasePage {
             $(champNomSite).sendKeys(Keys.ENTER);
 
             Thread.sleep(1000);
-            System.out.println("i am typing h0 ");
             $(champScope).sendKeys("H0");
             Thread.sleep(900);
             String id=$(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
