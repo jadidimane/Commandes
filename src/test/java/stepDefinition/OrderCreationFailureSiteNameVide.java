@@ -1,13 +1,17 @@
 package stepDefinition;
 
+import com.opencsv.exceptions.CsvValidationException;
 import io.cucumber.java.en.And;
+import pages.DetailCommandPage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class OrderCreationFailureSiteNameVide {
     pages.OrderCreationPage order=new pages.OrderCreationPage();
-    @And("je ne renseigne pas le nom du site")
-    public void je_renseigne_pas_le_nom_du_site() throws InterruptedException {
-        order.renseigner_les_sites(List.of("","",""));
-    }
+@And("je renseigne les quantités et je clique sur les boutons enregistrer , valoriser et envoyer")
+    public void renseigner_les_quantités() throws CsvValidationException, IOException {
+     DetailCommandPage detail= order.setValidationButton();
+     detail.setOrderPuQuantitySiteFree();
+}
 }

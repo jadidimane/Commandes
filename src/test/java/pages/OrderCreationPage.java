@@ -32,11 +32,13 @@ public class OrderCreationPage extends BasePage {
     private By dateCollecte=By.xpath("//input[@name='sendingDate']");
     private By DialogMessage=By.xpath("/html/body/div[8]/div/div[2]/div/div[2]");
     private By listArticle=By.xpath("//div[@class='ag-center-cols-container']//input");
-    public void selectMenuItem(){
-        SelenideElement menuItem = $(By.xpath("//div[contains(@id, 'qvs')]")).should(exist);
-        String id = menuItem.getAttribute("id");
-        int idqvs2 = Integer.parseInt(id.split("_")[1]);
-        menuItem.click();
+    public void selectMenuItem() throws InterruptedException {
+        int idqvs2=0;
+        String id=$(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
+        idqvs2=Integer.parseInt(id.split("_")[1]);
+        System.out.println(idqvs2);
+        Thread.sleep(700);
+        $(By.id("qvs_"+idqvs2)).click();
     }
     public void renseigner_le_type_de_valorisation() throws InterruptedException {
         $(typeValo).sendKeys("prix");
@@ -44,10 +46,11 @@ public class OrderCreationPage extends BasePage {
         selectMenuItem();
 
     }
-    public void renseigner_le_genre_de_commande(){
+    public void renseigner_le_genre_de_commande() throws InterruptedException {
         $(ordergenre).sendKeys(Keys.CONTROL + "a");
         $(ordergenre).sendKeys(Keys.DELETE);
-        $(ordergenre).sendKeys("Semi-Direct"+Keys.ENTER);
+        $(ordergenre).sendKeys("Semi-Direct");
+        selectMenuItem();
     }
     public void renseigner_les_informations_du_fournisseur(String supplierName) throws InterruptedException {
             $(supplierField).sendKeys(supplierName);
@@ -72,9 +75,13 @@ public class OrderCreationPage extends BasePage {
                 By champNomSite = By.xpath("//div[@comp-id='" + (suite + 7) + "']");
                 By champScope = By.xpath("//div[@comp-id='" + (suite + 8) + "']");
                 By sitePoids = By.xpath("(//div[@class='ag-center-cols-container'])[4]/div["+(i+1)+"]/div[3]//input");
+                Thread.sleep(1000);
                 $(champNomSite).sendKeys(clientsite);
+                Thread.sleep(1000);
                 selectMenuItem();
+                Thread.sleep(1000);
                 $(champScope).sendKeys("H0");
+                Thread.sleep(900);
                 selectMenuItem();
                 $(By.xpath("//div[@comp-id='" + (suite + 9) + "']")).click();
                 $(sitePoids).click();
@@ -88,11 +95,7 @@ public class OrderCreationPage extends BasePage {
     public void renseigner_les_articles(List<String> codes) throws CsvValidationException, IOException, InterruptedException, CsvValidationException {
         $(articlesPanel).scrollIntoView(true);
         for (int i = 0; i < codes.size(); i++) {
-            SelenideElement addButton = $(By.id("articleGrid-srgridtoolbar-add-button"))
-                    .shouldBe(Condition.visible, Duration.ofSeconds(10))
-                    .shouldBe(Condition.enabled);
-
-            addButton.scrollIntoView(true).click();
+            $(addArticle).scrollIntoView(true).click();
             By codeDivField = By.xpath("//div[@class='ag-center-cols-container'][1]/div["+(i+1)+"]/div[1]");
             $(codeDivField).shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
             By codeInputField = By.xpath("//div[@class='ag-center-cols-container'][1]/div["+(i+1)+"]/div[1]//input");
@@ -108,11 +111,8 @@ public class OrderCreationPage extends BasePage {
         $(By.xpath("//input[@aria-label='Mode de sélection']")).sendKeys(Keys.CONTROL + "a");
         $(By.xpath("//input[@aria-label='Mode de sélection']")).sendKeys(Keys.DELETE);
         $(By.xpath("//input[@aria-label='Mode de sélection']")).sendKeys(selectionMode);
-        Thread.sleep(600);
-        String id=$(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
-        idqvs2=Integer.parseInt(id.split("_")[1]);
-        Thread.sleep(600);
-        $(By.id("qvs_"+idqvs2)).click();
+        Thread.sleep(500);
+        $(By.className("q-virtual-scroll__content")).click();
     }
     public DetailCommandPage setValidationButton() {
         $(validationButton).click();

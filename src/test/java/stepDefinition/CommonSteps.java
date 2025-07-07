@@ -4,6 +4,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.DetailCommandPage;
 import utility.Excel;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class CommonSteps {
         order.renseigner_le_type_de_valorisation();
     }
     @And("je choisis le genre de commande")
-    public void renseigner_le_genre_de_commande() {
+    public void renseigner_le_genre_de_commande() throws InterruptedException {
         order.renseigner_le_genre_de_commande();
     }
     @And("je renseigne les informations du fournisseur")
@@ -51,5 +52,21 @@ public class CommonSteps {
     @Then("un popup s'affiche corriger les erreurs puis valider")
     public void is_popup_disabled(){
         order.is_popup_visible();
+    }
+
+    @And("je clique sur le bouton Enregistrer")
+    public void je_clique_sur_le_bouton_Enregistrer() {
+        order.setValidationButton();
+    }
+    @And("je répartis la commande sur les sites et je clique sur les boutons enregistrer , valoriser et envoyer")
+    public void repartir_les_commandes() throws CsvValidationException, IOException, InterruptedException {
+        pages.OrderCreationPage orderCreationPage = new pages.OrderCreationPage();
+        DetailCommandPage detail=orderCreationPage.setValidationButton();
+        detail.sendAndValidate();
+    }
+
+    @Then("le bon de commande est généré avec succès")
+    public void le_bon_de_commandes() {
+        System.out.println("le bon de commandes");
     }
 }

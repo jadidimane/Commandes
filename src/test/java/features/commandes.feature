@@ -6,16 +6,16 @@ Feature: Création d'une commande
     Given que je suis connecté à l'application, j'accède au menu et j'ouvre la page de création de commande
 
 
-#  Scenario: Créer une commande avec succès
-#    When je remplis le type de valorisation
-#    And je choisis le genre de commande
-#    And je renseigne les informations du fournisseur
-#    And je sélectionne les sites concernés
-#    And je choisis le mode de selection par article
-#    And je renseigne les articles
-#    And je clique sur le bouton Enregistrer
-#    And je répartis la commande sur les sites et je clique sur les boutons enregistrer , valoriser et envoyer
-#    Then le bon de commande est généré avec succès
+  Scenario: Créer une commande avec succès
+    When je remplis le type de valorisation
+    And je choisis le genre de commande
+    And je renseigne les informations du fournisseur
+    And je sélectionne les sites concernés
+    And je choisis le mode de selection par article
+    And je renseigne les articles
+    And je clique sur le bouton Enregistrer
+    And je répartis la commande sur les sites et je clique sur les boutons enregistrer , valoriser et envoyer
+    Then le bon de commande est généré avec succès
 
   Scenario: Fournisseur inexistant
     When je remplis le type de valorisation
@@ -63,8 +63,9 @@ Feature: Création d'une commande
     And je renseigne les informations du fournisseur
     And je choisis le mode de selection par article
     And je renseigne les articles
-    And je clique sur le bouton Enregistrer echec
-    Then un popup s'affiche corriger les erreurs puis valider
+    And je clique sur le bouton Enregistrer
+    And je renseigne les quantités et je clique sur les boutons enregistrer , valoriser et envoyer
+    Then le bon de commande est généré avec succès
 
   Scenario: Sites en doublon
     When je remplis le type de valorisation

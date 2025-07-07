@@ -9,6 +9,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.WebElement;
+import utility.Excel;
+
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -43,6 +45,13 @@ public class DetailCommandPage extends BasePage {
         }
 
     }
+    public void setOrderPuQuantitySiteFree() throws CsvValidationException, IOException {
+        int i;
+        $(By.xpath("//*[@id=\"gridArticles\"]/div/div[2]/div[2]/div[3]/div[2]/div/div/div[1]/div[4]")).scrollIntoView(true);
+    for(i=1;i< Excel.extractEANCodes().size()+1;i++){
+            $(By.xpath("//*[@id=\"gridArticles\"]/div/div[2]/div[2]/div[3]/div[2]/div/div/div["+i+"]/div[4]")).sendKeys("50");
+    }
+       }
     public void saveOrder(){
         $(this.saveButton).click();
       $(OK).click();
@@ -70,6 +79,14 @@ public class DetailCommandPage extends BasePage {
         this.sendOrder();
         Thread.sleep(5000);
     }
+    public void sendAndValidateSiteFree() throws InterruptedException, CsvValidationException, IOException {
+        this.setOrderPuQuantitySiteFree();
+        this.saveOrder();
+        this.valueOrder();
+        this.sendOrder();
+        Thread.sleep(5000);
+    }
+
 
 
 
