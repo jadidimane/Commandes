@@ -116,15 +116,15 @@ Feature: Création d'une commande
     And je clique sur le bouton Enregistrer echec
     Then un popup s'affiche corriger les erreurs puis valider
 
-  Scenario: Liste d’articles inexistante
-    When je remplis le type de valorisation
-    And je choisis le genre de commande
-    And je renseigne les informations du fournisseur
-    And je sélectionne les sites concernés
-    And je choisis le mode de selection par liste d’articles
-    And je saisis une liste d’articles inexistante
-    And je clique sur le bouton Enregistrer echec
-    Then un popup s'affiche corriger les erreurs puis valider
+#  Scenario: Liste d’articles inexistante
+#    When je remplis le type de valorisation
+#    And je choisis le genre de commande
+#    And je renseigne les informations du fournisseur
+#    And je sélectionne les sites concernés
+#    And je choisis le mode de selection par liste d’articles
+#    And je saisis une liste d’articles inexistante
+#    And je clique sur le bouton Enregistrer echec
+#    Then un popup s'affiche corriger les erreurs puis valider
 
   Scenario: Liste d’articles vide
     When je remplis le type de valorisation

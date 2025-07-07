@@ -28,9 +28,9 @@ public class CommonSteps {
     @And("je sélectionne les sites concernés")
     public void renseigner_les_sites() throws InterruptedException {
         List<String> list=new ArrayList<>();
-        list.add("RH Vitrolles");
-        list.add("RH Bonneveine");
-        list.add("RH Grand Littoral");
+        list.add("602");
+        list.add("603");
+        list.add("601");
         order.renseigner_les_sites(list);
     }
     @And("je choisis le mode de selection par article")
