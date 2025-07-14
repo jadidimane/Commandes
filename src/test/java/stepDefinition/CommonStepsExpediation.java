@@ -14,7 +14,7 @@ public class CommonStepsExpediation {
     ModificationQuantities mod=new ModificationQuantities();
     @When("je renseigne le numéro de commande")
     public void renseigner_numero_commande(){
-        mod.setNumCommande("322");
+        mod.setNumCommande("327");
     }
     @And("je renseigne le site livreur")
     public void renseigner_site_livreur() throws InterruptedException {

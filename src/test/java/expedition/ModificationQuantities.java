@@ -15,7 +15,7 @@ public class ModificationQuantities extends BasePage {
     By boutonChercher=By.xpath("//button[@id='toolbarpage-search-button']");
     By selectAll=By.xpath("//input[@aria-label='Press Space to toggle row selection (décoché)']");
     By edit=By.xpath("//i[text()='visibility']");
-    By dialogueMessageIntrouv=By.xpath("/html/body/div[4]/div/div[2]/div/div[2]");
+    By dialogueMessageIntrouv=By.className("q-dialog__message");
     public void setNumCommande(String num) {
         $(numCommande).sendKeys(num);
     }
