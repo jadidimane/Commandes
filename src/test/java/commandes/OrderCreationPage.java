@@ -1,6 +1,7 @@
 package commandes;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
 import com.opencsv.exceptions.CsvValidationException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,6 +11,8 @@ import java.time.Duration;
 import java.util.List;
 
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -212,10 +215,14 @@ public class OrderCreationPage extends BasePage {
         $(firstline).scrollIntoView(true);
         System.out.println(ligneint);
         System.out.println(nblignesInt);
+        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.not(
+                ExpectedConditions.textToBePresentInElementLocated(nblines, "817")
+        ));
         for(int i=0;i<nblignesInt ;i++){
             System.out.println(i);
             $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']")).scrollIntoView(true);
-             $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']")).click();
+            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']")).click();
             $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys(Keys.CONTROL  + "a"+ Keys.DELETE );
             $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys("1000"+Keys.ENTER);
 
