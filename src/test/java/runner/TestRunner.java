@@ -12,5 +12,5 @@ import io.cucumber.junit.CucumberOptions;
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "html:target/cucumber-html-report.html",
                 "html:target/cucumber-html-report"})
-public  class TestRunner {
+public  class  TestRunner {
 }

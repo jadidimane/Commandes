@@ -1,18 +1,13 @@
-package pages;
+package commandes;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.opencsv.exceptions.CsvValidationException;
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.*;
-import org.openqa.selenium.WebElement;
+import pages.BasePage;
 import utility.Excel;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;

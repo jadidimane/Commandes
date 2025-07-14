@@ -1,11 +1,9 @@
 package stepDefinition;
 import io.cucumber.java.en.Given;
 import com.codeborne.selenide.Configuration;
-import org.junit.Before;
-import pages.BasePage.*;
 import pages.LoginPage;
 import pages.MenuPage;
-import pages.OrderSearchPage;
+import commandes.OrderSearchPage;
 
 public class BasePage {
     @Given("que je suis connecté à l'application, j'accède au menu et j'ouvre la page de création de commande")
@@ -13,7 +11,7 @@ public class BasePage {
         Configuration.timeout = 10000;
         //login_to_the_application
         LoginPage loginPage = new LoginPage();
-        loginPage.login_to_application();
+        loginPage.login_to_application("911");
         //access_order_search_page
         MenuPage menuPage = new MenuPage();
         menuPage.access_order_search_page();
@@ -21,5 +19,18 @@ public class BasePage {
         OrderSearchPage orderSearchPage = new OrderSearchPage();
         orderSearchPage.access_order_creation_page();
 
+    }
+    @Given("que je suis connecté à l'application, j'accède au menu et j'ouvre la page de création de commande en tant que magazinier dans le site 921")
+    public void navigateToOrderCreationPage2() {
+        Configuration.timeout = 10000;
+        //login_to_the_application
+        LoginPage loginPage = new LoginPage();
+        loginPage.login_to_application("921");
+        //access_order_search_page
+        MenuPage menuPage = new MenuPage();
+        menuPage.access_order_search_page();
+        //access_order_creation_page
+        OrderSearchPage orderSearchPage = new OrderSearchPage();
+        orderSearchPage.access_order_creation_page();
     }
 }

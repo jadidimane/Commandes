@@ -1,7 +1,6 @@
-package pages;
+package commandes;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
 import com.opencsv.exceptions.CsvValidationException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -9,13 +8,12 @@ import org.openqa.selenium.Keys;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.junit.Assert;
 
-import static com.codeborne.selenide.Condition.exist;
+import org.junit.Assert;
+import pages.BasePage;
+
 import static com.codeborne.selenide.Selenide.$;
-import static utility.Excel.extractEANCodes;
-import java.util.List;
+
 import java.lang.String;
 public class OrderCreationPage extends BasePage {
     private By popup= By.xpath("//*[@id=\"q-notify\"]/div/div[5]/div/div/div[1]/div");
@@ -33,6 +31,9 @@ public class OrderCreationPage extends BasePage {
     private By dateCollecte=By.xpath("//input[@name='sendingDate']");
     private By DialogMessage=By.xpath("/html/body/div[8]/div/div[2]/div/div[2]");
     private By listArticle=By.xpath("//div[@id='myBusinessFieldFromEditorInt']//input");
+    private By firstline=By.xpath("//*[@id=\"gridArticles\"]/div/div[2]/div[2]/div[3]/div[2]/div/div/div[1]");
+    private By nblines=By.xpath("//*[@id=\"gridArticles\"]/div/div[3]/div[1]/div[1]/span[2]");
+    private By dialog=By.className("q-dialog__message");
     public void selectMenuItem() throws InterruptedException {
         int idqvs2=0;
         String id=$(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
@@ -52,7 +53,7 @@ public class OrderCreationPage extends BasePage {
         $(ordergenre).sendKeys(genre);
         Thread.sleep(100);
         $(ordergenre).sendKeys(Keys.ENTER);
-
+        Thread.sleep(500);
     }
     public void renseigner_les_informations_du_fournisseur(String supplierName) throws InterruptedException {
             $(supplierField).sendKeys(supplierName);
@@ -101,7 +102,7 @@ public class OrderCreationPage extends BasePage {
         $(By.xpath("//input[@aria-label='Mode de sélection']")).sendKeys(Keys.DELETE);
         $(By.xpath("//input[@aria-label='Mode de sélection']")).sendKeys(selectionMode);
         Thread.sleep(500);
-        selectMenuItem();
+        $(By.xpath("//input[@aria-label='Mode de sélection']")).sendKeys(Keys.ENTER);
     }
     public DetailCommandPage setValidationButton() {
         $(validationButton).click();
@@ -121,12 +122,13 @@ public class OrderCreationPage extends BasePage {
     public void SetValidationButton() {
         $(validationButton).click();
     }
+
     public void is_popup_visible(){
         String pop=$(popup).getText();
         Assert.assertEquals($(popup).getText(),"Veuillez corriger toutes les erreurs avant d'enregistrer");
-
     }
-    public void invalid_supplier(String supplierName) throws InterruptedException, CsvValidationException, IOException {
+
+    public void invalid_supplier(String supplierName) {
         $(supplierField).sendKeys(supplierName + Keys.ENTER);
     }
     public void date_collecte_invalide() throws InterruptedException {
@@ -203,5 +205,25 @@ public class OrderCreationPage extends BasePage {
         $(By.id("articleListGrid-srgridtoolbar-add-button")).click();
         $(listArticle).sendKeys(listName);
         Thread.sleep(2000);
+    }
+    public void modifier_la_repartition_dans_une_commande_app_entrepot(){
+        int nblignesInt=  Integer.parseInt($(nblines).getText());
+        int ligneint=Integer.parseInt($(firstline).getAttribute("comp-id"));
+        $(firstline).scrollIntoView(true);
+        System.out.println(ligneint);
+        System.out.println(nblignesInt);
+        for(int i=0;i<nblignesInt ;i++){
+            System.out.println(i);
+            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']")).scrollIntoView(true);
+             $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']")).click();
+            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys(Keys.CONTROL  + "a"+ Keys.DELETE );
+            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys("1000"+Keys.ENTER);
+
+        }
+        $(validationButton).click();
+    }
+    public void is_dialog_enabled(){
+        String s=$(dialog).getText();
+        Assert.assertEquals(s,"Commande valorisée avec succès");
     }
 }

@@ -1,10 +1,11 @@
 package stepDefinition;
 
 import com.opencsv.exceptions.CsvValidationException;
+import commandes.OrderCreationPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.DetailCommandPage;
+import commandes.DetailCommandPage;
 import utility.Excel;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommonSteps {
-    pages.OrderCreationPage order = new pages.OrderCreationPage();
+    OrderCreationPage order = new OrderCreationPage();
     @When("je remplis le type de valorisation")
     public void renseigner_le_type_de_valorisation() throws InterruptedException {
         order.renseigner_le_type_de_valorisation();
@@ -60,7 +61,7 @@ public class CommonSteps {
     }
     @And("je répartis la commande sur les sites et je clique sur les boutons enregistrer , valoriser et envoyer")
     public void repartir_les_commandes() throws CsvValidationException, IOException, InterruptedException {
-        pages.OrderCreationPage orderCreationPage = new pages.OrderCreationPage();
+        OrderCreationPage orderCreationPage = new OrderCreationPage();
         DetailCommandPage detail=orderCreationPage.setValidationButton();
         detail.sendAndValidate();
     }
@@ -69,4 +70,5 @@ public class CommonSteps {
     public void le_bon_de_commandes() {
         System.out.println("le bon de commandes");
     }
+
 }

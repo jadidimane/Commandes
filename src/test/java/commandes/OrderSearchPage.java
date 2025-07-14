@@ -1,6 +1,7 @@
-package pages;
+package commandes;
 
 import org.openqa.selenium.By;
+import pages.BasePage;
 
 import static com.codeborne.selenide.Selenide.$;
 

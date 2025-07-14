@@ -23,16 +23,16 @@ public class LoginPage extends BasePage {
         menuPage.setDriver(this.getDriver());
         return menuPage;
     }
-    public void setSite()  {
+    public void setSite(String site)  {
         int idqvs2=0;
         $(By.cssSelector(".desktop")).click();
-        $(siteI).sendKeys("911");
+        $(siteI).sendKeys(site);
         $(By.id("qvs_2")).click();
     }
-    public MenuPage login_to_application() {
+    public MenuPage login_to_application(String site) {
         setUsernameField();
         setPasswordField();
-        setSite();
+        setSite(site);
         return setLoginButton();
     }
 
