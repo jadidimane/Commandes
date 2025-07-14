@@ -17,7 +17,8 @@ Scenario: expédier avec succès
     And je renseigne le site livreur
     And je clique sur rechercher
     And je clique sur select all 2
-    And je clique sur edition des avis de l'expédition envoyer
+    And je clique sur edition des avis de l'expédition
+    And je clique sur envoyer
     Then une boite de dialogue s'affiche exp
 
     Scenario: modification des quantités à expédier données introuvables

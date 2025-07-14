@@ -24,6 +24,9 @@ public class Expedition extends BasePage {
         $(avisEdition).click();
         $(OK).click();
         $(Ok).click();
+
+    }
+    public void envoyer(){
         $(envoyer).click();
         $(Ok).click();
     }

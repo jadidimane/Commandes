@@ -53,9 +53,13 @@ public class CommonStepsExpediation {
         MenuPage menu=mod.setHome();
         menu.setexpedition();
     }
-    @And("je clique sur edition des avis de l'expédition envoyer")
+    @And("je clique sur edition des avis de l'expédition")
     public void finExpedition() throws InterruptedException {
         expedition.setAvisEdition();
+    }
+    @And("je clique sur envoyer")
+    public void clique_sur_envoyer()  {
+        expedition.envoyer();
     }
     @Then("une boite de dialogue s'affiche exp")
     public void dialogue_affiche_exp()  {
