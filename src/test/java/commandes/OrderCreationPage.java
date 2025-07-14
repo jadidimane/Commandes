@@ -210,7 +210,6 @@ public class OrderCreationPage extends BasePage {
         Thread.sleep(2000);
     }
     public void modifier_la_repartition_dans_une_commande_app_entrepot(){
-        getDriver().navigate().refresh();
         int nblignesInt=  Integer.parseInt($(nblines).getText());
         int ligneint=Integer.parseInt($(firstline).getAttribute("comp-id"));
         $(firstline).scrollIntoView(true);
