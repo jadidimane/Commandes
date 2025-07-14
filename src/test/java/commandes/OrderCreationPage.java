@@ -210,14 +210,15 @@ public class OrderCreationPage extends BasePage {
         Thread.sleep(2000);
     }
     public void modifier_la_repartition_dans_une_commande_app_entrepot(){
+        getDriver().navigate().refresh();
         int nblignesInt=  Integer.parseInt($(nblines).getText());
         int ligneint=Integer.parseInt($(firstline).getAttribute("comp-id"));
         $(firstline).scrollIntoView(true);
         System.out.println(ligneint);
         System.out.println(nblignesInt);
-        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.ofSeconds(17));
         wait.until(ExpectedConditions.not(
-                ExpectedConditions.textToBePresentInElementLocated(nblines, "817")
+                ExpectedConditions.textToBePresentInElementLocated(firstline, "817")
         ));
         for(int i=0;i<nblignesInt ;i++){
             System.out.println(i);
