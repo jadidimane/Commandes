@@ -29,7 +29,7 @@ public class Expedition extends BasePage {
     }
     public void is_dialog_message_enabeled(){
           String s=$(dialog).getText();
-        Assert.assertEquals(s,"Avis d'expédition envoyé avec succès");
+        Assert.assertEquals("Avis d'expédition envoyé avec succès",s);
     }
 
 }

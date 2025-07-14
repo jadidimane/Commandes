@@ -24,11 +24,7 @@ public class ModificationQuantities extends BasePage {
         $(siteLivreur).sendKeys(Keys.DELETE);
         $(siteLivreur).sendKeys(site);
         Thread.sleep(1000);
-        int idqvs2=0;
-        String id=$(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
-        idqvs2=Integer.parseInt(id.split("_")[1]);
-        Thread.sleep(700);
-        $(By.id("qvs_"+idqvs2)).click();
+        $(siteLivreur).sendKeys(Keys.ENTER);
     }
     public void setBoutonChercher() {
         $(boutonChercher).click();
@@ -51,7 +47,7 @@ public class ModificationQuantities extends BasePage {
     }
     public void is_dialog_message_enabeled(){
         String s=$(dialogueMessageIntrouv).getText();
-        Assert.assertEquals(s,"Donnees introuvables");
+        Assert.assertEquals("Donnees introuvables",s);
     }
 
 }
