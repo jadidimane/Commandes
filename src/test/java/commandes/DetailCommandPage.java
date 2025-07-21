@@ -1,5 +1,6 @@
 package commandes;
 
+import com.codeborne.selenide.WebDriverRunner;
 import com.opencsv.exceptions.CsvValidationException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -21,6 +22,9 @@ public class DetailCommandPage extends BasePage {
     private By valueOrderButton = By.xpath("//span[text()='Valoriser']");
     private By sendOrderButton = By.xpath("//span[text()='Envoyer']");
     private By OK= By.xpath("/html/body/div[9]/div/div[2]/div/div[3]/button/span[2]/span");
+    private By firstline=By.xpath("//*[@id=\"gridArticles\"]/div/div[2]/div[2]/div[3]/div[2]/div/div/div[1]");
+    private By nblines=By.xpath("//*[@id=\"gridArticles\"]/div/div[3]/div[1]/div[1]/span[2]");
+
     //    private By PRGeneratorButton = By.xpath("//span[text()='Editer']");
     public void setOrderPUQuantity() throws IOException, InterruptedException, CsvValidationException {
         int i=1;
@@ -81,7 +85,22 @@ public class DetailCommandPage extends BasePage {
         this.sendOrder();
         Thread.sleep(5000);
     }
+    public void modifier_la_repartition_dans_une_commande_app_entrepot(){
+        int nblignesInt=  Integer.parseInt($(nblines).getText());
+        int ligneint=Integer.parseInt($(firstline).getAttribute("comp-id"));
+        $(firstline).scrollIntoView(true);
+        System.out.println(ligneint);
+        System.out.println(nblignesInt);
+        for(int i=0;i<nblignesInt ;i++){
+            System.out.println(i);
+            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']")).scrollIntoView(true);
+            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']")).click();
+            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys(Keys.CONTROL  + "a"+ Keys.DELETE );
+            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys("1000"+Keys.ENTER);
 
+        }
+        $(validateButton).click();
+    }
 
 
 

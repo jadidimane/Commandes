@@ -34,8 +34,6 @@ public class OrderCreationPage extends BasePage {
     private By dateCollecte=By.xpath("//input[@name='sendingDate']");
     private By DialogMessage=By.xpath("/html/body/div[8]/div/div[2]/div/div[2]");
     private By listArticle=By.xpath("//div[@id='myBusinessFieldFromEditorInt']//input");
-    private By firstline=By.xpath("//*[@id=\"gridArticles\"]/div/div[2]/div[2]/div[3]/div[2]/div/div/div[1]");
-    private By nblines=By.xpath("//*[@id=\"gridArticles\"]/div/div[3]/div[1]/div[1]/span[2]");
     private By dialog=By.className("q-dialog__message");
     public void selectMenuItem() throws InterruptedException {
         int idqvs2=0;
@@ -107,22 +105,14 @@ public class OrderCreationPage extends BasePage {
         Thread.sleep(500);
         $(By.xpath("//input[@aria-label='Mode de sélection']")).sendKeys(Keys.ENTER);
     }
-    public DetailCommandPage setValidationButton() {
+    public DetailCommandPage SetValidationButton() {
         $(validationButton).click();
-        DetailCommandPage detail= new DetailCommandPage();
+        System.out.println($(By.id("srtoolbartransaction-pageOrderDetail-breadcrumb")).getText());
+        DetailCommandPage detail = new DetailCommandPage();
         detail.setDriver(getDriver());
         return detail;
     }
-    public DetailCommandPage newCommande(String selectionMode,String genre,List<String> articles,List<String> sites, String supplierName) throws InterruptedException, CsvValidationException, IOException {
-        renseigner_le_genre_de_commande(genre);
-        renseigner_le_type_de_valorisation();
-        renseigner_les_informations_du_fournisseur(supplierName);
-        choisir_le_mode_de_selection_par_article(selectionMode);
-        renseigner_les_articles(articles);
-        renseigner_les_sites(sites);
-        return setValidationButton();
-    }
-    public void SetValidationButton() {
+    public void setvalidationButton(){
         $(validationButton).click();
     }
 
@@ -209,27 +199,7 @@ public class OrderCreationPage extends BasePage {
         $(listArticle).sendKeys(listName);
         Thread.sleep(2000);
     }
-    public void modifier_la_repartition_dans_une_commande_app_entrepot(){
-        WebDriverRunner.getWebDriver().navigate().refresh();
-        int nblignesInt=  Integer.parseInt($(nblines).getText());
-        int ligneint=Integer.parseInt($(firstline).getAttribute("comp-id"));
-        $(firstline).scrollIntoView(true);
-        System.out.println(ligneint);
-        System.out.println(nblignesInt);
-        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.ofSeconds(17));
-        wait.until(ExpectedConditions.not(
-                ExpectedConditions.textToBePresentInElementLocated(firstline, "817")
-        ));
-        for(int i=0;i<nblignesInt ;i++){
-            System.out.println(i);
-            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']")).scrollIntoView(true);
-            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']")).click();
-            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys(Keys.CONTROL  + "a"+ Keys.DELETE );
-            $(By.xpath("//div[@comp-id='" + (ligneint+i) +"']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys("1000"+Keys.ENTER);
 
-        }
-        $(validationButton).click();
-    }
     public void is_dialog_enabled(){
         String s=$(dialog).getText();
         Assert.assertEquals(s,"Commande valorisée avec succès");

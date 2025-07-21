@@ -8,18 +8,30 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 
 public class MenuPage extends BasePage{
+    private By homeIcon=By.xpath("//*[@id=\"srtoolbartransaction-home-breadcrumb\"]/i");
     private By menuLabel= By.xpath("//*[text()='Gestion des flux']");
     private By ExpeeditionLabel=By.xpath("//*[text()='Expédition']");
     private By CommandeFournisseur=By.xpath("//*[text()='Commandes fournisseur']");
     private By changeQuantitiesOfexpediation=By.xpath("//div[text()='Modification des quantités à expédier']");
+    private By verifySearch=By.xpath("//*[@id=\"srtoolbartransaction-pageOrderSearch-breadcrumb\"]");
     public void setMenuLabel(){
         $(menuLabel).click();
     }
     public OrderSearchPage access_order_search_page(){
+        System.out.println($(homeIcon).exists());
+        if($(verifySearch).exists()){
+            $(homeIcon).click();
+            MenuPage menuPage=new MenuPage();
+            menuPage.setDriver(this.getDriver());
+            $(CommandeFournisseur).click();
+            OrderSearchPage order= new OrderSearchPage();
+            order.setDriver(this.getDriver());
+            return order;
+        } else{
         $(CommandeFournisseur).click();
         OrderSearchPage order= new OrderSearchPage();
         order.setDriver(this.getDriver());
-        return order;
+        return order;}
     }
     public ModificationQuantities access_modification_quantities_page(){
         $(menuLabel).click();

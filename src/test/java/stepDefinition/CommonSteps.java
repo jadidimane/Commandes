@@ -49,6 +49,7 @@ public class CommonSteps {
     @And("je clique sur le bouton Enregistrer echec")
     public void clique_sur_le_bouton_Enregistrer() throws InterruptedException {
         order.SetValidationButton();
+
     }
     @Then("un popup s'affiche corriger les erreurs puis valider")
     public void is_popup_disabled(){
@@ -57,12 +58,12 @@ public class CommonSteps {
 
     @And("je clique sur le bouton Enregistrer")
     public void je_clique_sur_le_bouton_Enregistrer() {
-        order.setValidationButton();
+        order.setvalidationButton();
     }
     @And("je répartis la commande sur les sites et je clique sur les boutons enregistrer , valoriser et envoyer")
     public void repartir_les_commandes() throws CsvValidationException, IOException, InterruptedException {
         OrderCreationPage orderCreationPage = new OrderCreationPage();
-        DetailCommandPage detail=orderCreationPage.setValidationButton();
+        DetailCommandPage detail=orderCreationPage.SetValidationButton();
         detail.sendAndValidate();
     }
 
