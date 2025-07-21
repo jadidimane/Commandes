@@ -107,7 +107,6 @@ public class OrderCreationPage extends BasePage {
     }
     public DetailCommandPage SetValidationButton() {
         $(validationButton).click();
-        System.out.println($(By.id("srtoolbartransaction-pageOrderDetail-breadcrumb")).getText());
         DetailCommandPage detail = new DetailCommandPage();
         detail.setDriver(getDriver());
         return detail;

@@ -48,7 +48,7 @@ public class CommonSteps {
     }
     @And("je clique sur le bouton Enregistrer echec")
     public void clique_sur_le_bouton_Enregistrer() throws InterruptedException {
-        order.SetValidationButton();
+        order.setvalidationButton();
 
     }
     @Then("un popup s'affiche corriger les erreurs puis valider")
