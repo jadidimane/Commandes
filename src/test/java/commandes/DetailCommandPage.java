@@ -98,7 +98,7 @@ public class DetailCommandPage extends BasePage {
             $(cell).click();
             $(cell).sendKeys(Keys.CONTROL  + "a"+ Keys.DELETE );
             $(cell).sendKeys("1000"+Keys.ENTER);
-            $(cell).getText();
+            System.out.println($(cell).getText());
         }
         $(validateButton).click();
     }
