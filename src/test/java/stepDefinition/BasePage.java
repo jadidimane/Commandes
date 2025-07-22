@@ -11,6 +11,7 @@ public class BasePage {
     public void navigateToOrderCreationPage() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
+        options.addArguments("--window-size=1920,1080");
         Configuration.timeout = 13000;
         //login_to_the_application
         LoginPage loginPage = new LoginPage();
