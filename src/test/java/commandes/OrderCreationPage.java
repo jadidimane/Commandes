@@ -1,8 +1,8 @@
 package commandes;
-
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import com.opencsv.exceptions.CsvValidationException;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -14,10 +14,12 @@ import org.junit.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
+import utility.ScreenShot;
 
 import static com.codeborne.selenide.Selenide.$;
 
 import java.lang.String;
+@ExtendWith(ScreenShot.class)
 public class OrderCreationPage extends BasePage {
     private By popup= By.xpath("//*[@id=\"q-notify\"]/div/div[5]/div/div/div[1]/div");
     private By ordergenre = By.xpath("//div[@id='orderMode']/input");
