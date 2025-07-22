@@ -58,7 +58,7 @@ pipeline {
         }
         stage('Clean Allure results') {
             steps {
-                sh 'rm -rf target/allure-results/*'
+                sh 'rm -rf target/allure-results || true'
             }
         }
     }
