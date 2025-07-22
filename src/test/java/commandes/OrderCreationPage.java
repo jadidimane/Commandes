@@ -34,7 +34,7 @@ public class OrderCreationPage extends BasePage {
     private By dateCollecte=By.xpath("//input[@name='sendingDate']");
     private By DialogMessage=By.xpath("/html/body/div[8]/div/div[2]/div/div[2]");
     private By listArticle=By.xpath("//div[@id='myBusinessFieldFromEditorInt']//input");
-
+    
     public void selectMenuItem() throws InterruptedException {
         int idqvs2=0;
         String id=$(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
@@ -131,11 +131,11 @@ public class OrderCreationPage extends BasePage {
     }
     public void is_Dialog_Message_enabled_Aucun_Article(){
         String s=$(DialogMessage).getText();
-        Assert.assertEquals(s,"Vous devez saisir au moins un article.");
+        Assert.assertEquals("Vous devez saisir au moins un article.", s);
     }
     public void is_Dialog_Message_enabled_Aucune_Liste_Article(){
         String s=$(DialogMessage).getText();
-        Assert.assertEquals(s,"Vous devez saisir au moins une liste d'articles.");
+        Assert.assertEquals("Vous devez saisir au moins une liste d'articles.",s);
     }
     public void ArticleManquant(List<String> articles) throws InterruptedException, CsvValidationException, IOException {
         $(articlesPanel).scrollIntoView(true);
