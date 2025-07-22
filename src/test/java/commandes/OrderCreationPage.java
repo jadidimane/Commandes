@@ -34,7 +34,7 @@ public class OrderCreationPage extends BasePage {
     private By dateCollecte=By.xpath("//input[@name='sendingDate']");
     private By DialogMessage=By.xpath("/html/body/div[8]/div/div[2]/div/div[2]");
     private By listArticle=By.xpath("//div[@id='myBusinessFieldFromEditorInt']//input");
-    private By dialog=By.className("q-dialog__message");
+
     public void selectMenuItem() throws InterruptedException {
         int idqvs2=0;
         String id=$(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
@@ -199,8 +199,5 @@ public class OrderCreationPage extends BasePage {
         Thread.sleep(2000);
     }
 
-    public void is_dialog_enabled(){
-        String s=$(dialog).getText();
-        Assert.assertEquals(s,"Commande valorisée avec succès");
-    }
+
 }

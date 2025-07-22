@@ -21,6 +21,6 @@ public class CommonStepsCommandeAppr {
    }
    @Then("une boite de dialogue est affiche")
     public void une_boite_de_dialogue_affiché() {
-       order.is_dialog_enabled();
+       detail.is_dialog_enabled();
    }
 }

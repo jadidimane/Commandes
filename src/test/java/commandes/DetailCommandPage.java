@@ -2,6 +2,7 @@ package commandes;
 
 import com.codeborne.selenide.WebDriverRunner;
 import com.opencsv.exceptions.CsvValidationException;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,7 @@ public class DetailCommandPage extends BasePage {
     private By OK= By.xpath("/html/body/div[9]/div/div[2]/div/div[3]/button/span[2]/span");
     private By firstline=By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='0']");
     private By nblines=By.xpath("//*[@id=\"gridArticles\"]/div/div[3]/div[1]/div[1]/span[2]");
+    private By dialog=By.className("q-dialog__message");
 
     //    private By PRGeneratorButton = By.xpath("//span[text()='Editer']");
     public void setOrderPUQuantity() throws IOException, InterruptedException, CsvValidationException {
@@ -101,6 +103,10 @@ public class DetailCommandPage extends BasePage {
         $(validateButton).click();
     }
 
+    public void is_dialog_enabled(){
+        String s=$(dialog).getText();
+        Assert.assertEquals(s,"Commande valorisée avec succès");
+    }
 
 
 }
