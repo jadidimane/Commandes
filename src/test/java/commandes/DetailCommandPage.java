@@ -11,8 +11,7 @@ import utility.Excel;
 import java.io.IOException;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 import static utility.Excel.map;
 
 public class DetailCommandPage extends BasePage {
@@ -89,11 +88,14 @@ public class DetailCommandPage extends BasePage {
         int nblignesInt=  Integer.parseInt($(nblines).getText());
         $(firstline).scrollIntoView(true);
         for(int i=0;i<nblignesInt ;i++){
+           WebElement cell=$("//div[@class='ag-center-cols-container']/div[@row-index='" + i + "']//div[@col-id='orderPUQuantity']");
+
+            // Scroll vers la cellule
             System.out.println(i);
-            $(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='"+i+"']//div[@col-id='orderPUQuantity']")).scrollIntoView(true);
-            $(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='"+i+"']//div[@col-id='orderPUQuantity']")).click();
-            $(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='"+i+"']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys(Keys.CONTROL  + "a"+ Keys.DELETE );
-            $(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='"+i+"']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys("1000"+Keys.ENTER);
+            executeJavaScript("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", cell);
+            $(cell).click();
+            $(cell).sendKeys(Keys.CONTROL  + "a"+ Keys.DELETE );
+            $(cell).sendKeys("1000"+Keys.ENTER);
 
         }
         $(validateButton).click();
