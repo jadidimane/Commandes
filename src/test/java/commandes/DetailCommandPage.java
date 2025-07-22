@@ -96,9 +96,9 @@ public class DetailCommandPage extends BasePage {
             System.out.println(i);
             executeJavaScript("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", cell);
             $(cell).click();
-            $(cell).sendKeys(Keys.CONTROL  + "a"+ Keys.DELETE );
-            $(cell).sendKeys("1000"+Keys.ENTER);
-            System.out.println($(cell).getText());
+            $(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='" + i + "']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
+            $(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='" + i + "']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys("1000"+Keys.ENTER);
+            System.out.println($(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='" + i + "']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).getText());
         }
         $(validateButton).click();
     }
@@ -107,6 +107,5 @@ public class DetailCommandPage extends BasePage {
         String s=$(dialog).getText();
         Assert.assertEquals(s,"Commande valorisée avec succès");
     }
-
 
 }
