@@ -88,7 +88,7 @@ public class DetailCommandPage extends BasePage {
         int nblignesInt=  Integer.parseInt($(nblines).getText());
         $(firstline).scrollIntoView(true);
         for(int i=0;i<nblignesInt ;i++){
-           WebElement cell=$("//div[@class='ag-center-cols-container']/div[@row-index='" + i + "']//div[@col-id='orderPUQuantity']");
+           WebElement cell=$(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='" + i + "']//div[@col-id='orderPUQuantity']"));
 
             // Scroll vers la cellule
             System.out.println(i);
