@@ -12,6 +12,7 @@ Feature: Expédition des commandes
     And je modifie les quantités
     And je clique sur valider
     Then je suis redirigé vers la page Menu
+
 Scenario: expédier avec succès
     When je clique sur expédition
     When je renseigne le numéro de commande

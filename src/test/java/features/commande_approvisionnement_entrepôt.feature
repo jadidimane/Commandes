@@ -6,7 +6,7 @@ Feature: Création d'une commande flux approvisionnement entrepôt
     Given que je suis connecté à l'application, j'accède au menu et j'ouvre la page de création de commande en tant que magazinier dans le site 921
 
 
-  Scenario: Créer une commande avec succès
+  Scenario: Créer une commande normale avec succès
     When   je choisis le genre de commande app
     And je renseigne les informations du fournisseur
     And je choisis le mode de selection par article

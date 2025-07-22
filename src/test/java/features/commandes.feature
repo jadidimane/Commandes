@@ -6,7 +6,7 @@ Feature: Création d'une commande
     Given que je suis connecté à l'application, j'accède au menu et j'ouvre la page de création de commande
 
 
-  Scenario: Créer une commande avec succès
+  Scenario: Créer une commande Semi direct avec succès
     When je remplis le type de valorisation
     And je choisis le genre de commande
     And je renseigne les informations du fournisseur
