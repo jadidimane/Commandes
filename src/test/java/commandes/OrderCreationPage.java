@@ -131,10 +131,12 @@ public class OrderCreationPage extends BasePage {
     }
     public void is_Dialog_Message_enabled_Aucun_Article(){
         String s=$(DialogMessage).getText();
+        System.out.println(s);
         Assert.assertEquals("Vous devez saisir au moins un article.", s);
     }
     public void is_Dialog_Message_enabled_Aucune_Liste_Article(){
         String s=$(DialogMessage).getText();
+        System.out.println(s);
         Assert.assertEquals("Vous devez saisir au moins une liste d'articles.",s);
     }
     public void ArticleManquant(List<String> articles) throws InterruptedException, CsvValidationException, IOException {
