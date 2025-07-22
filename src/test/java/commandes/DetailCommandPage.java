@@ -98,7 +98,6 @@ public class DetailCommandPage extends BasePage {
             $(cell).click();
             $(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='" + i + "']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
             $(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='" + i + "']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).sendKeys("1000"+Keys.ENTER);
-            System.out.println($(By.xpath("//div[@class='ag-center-cols-container']/div[@row-index='" + i + "']//div[@col-id='orderPUQuantity']//input[@name='orderPUQuantity']")).getText());
         }
         $(validateButton).click();
     }
