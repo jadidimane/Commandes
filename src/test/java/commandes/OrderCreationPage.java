@@ -83,7 +83,7 @@ public class OrderCreationPage extends BasePage {
 
             $(By.xpath("//*[@id=\"siteScopeGrid\"]/div/div[2]/div[2]/div[1]/div[1]/div/div[3]/div[2]/div[2]")).click();
     }
-    public void renseigner_les_articles(List<String> codes) throws CsvValidationException, IOException, InterruptedException, CsvValidationException {
+    public void renseigner_les_articles(List<String> codes) {
         $(articlesPanel).scrollIntoView(true);
         for (int i = 0; i < codes.size(); i++) {
             $(addArticle).scrollIntoView(true).click();
