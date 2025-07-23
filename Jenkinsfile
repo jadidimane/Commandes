@@ -23,7 +23,11 @@ pipeline {
                 bat 'mvn clean install -DskipTests'
             }
         }
-
+        stage('Clean Allure Results') {
+            steps {
+                sh 'rm -rf target/allure-results/*'
+                sh 'rm -rf target/allure-report/history'
+            }
         stage('Test') {
             steps {
                 bat 'mvn test'
