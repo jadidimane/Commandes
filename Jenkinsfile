@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Clean Allure Results') {
             steps {
-               bat 'del /Q C:/ProgramData/Jenkins/.jenkins/workspace/commande/allure-results/*.*'
+               bat 'del /Q C:\ProgramData\Jenkins\.jenkins\workspace\commande\allure-results\*.*'
             }
             }
         stage('Test') {
