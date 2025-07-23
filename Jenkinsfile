@@ -23,11 +23,6 @@ pipeline {
                 bat 'mvn clean install -DskipTests'
             }
         }
-        stage('Clean Allure Results') {
-            steps {
-               bat 'del /Q C:\ProgramData\Jenkins\.jenkins\workspace\commande\allure-results\*.*'
-            }
-            }
         stage('Test') {
             steps {
                 bat 'mvn test'
