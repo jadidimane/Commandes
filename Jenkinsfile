@@ -56,11 +56,6 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
             }
         }
-        stage('Clean Allure results') {
-            steps {
-                sh 'rm -rf target/allure-results || true'
-            }
-        }
     }
 
     post {
