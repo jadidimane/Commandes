@@ -17,7 +17,18 @@ pipeline {
                     url: 'https://github.com/jadidimane/Commandes.git'
             }
         }
+        stage('Clean Allure Results & Reports') {
+            steps {
+                bat '''
+                REM Nettoyer les fichiers JSON dans allure-results
+                rmdir /S /Q C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\commande\\allure-results
 
+                REM Supprimer tous les fichiers JSON dans allure-report
+                rmdir /S /Q C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\commande\\allure-report
+
+                '''
+            }
+        }
         stage('Build') {
             steps {
                 bat 'mvn clean install -DskipTests'
