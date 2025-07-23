@@ -9,16 +9,16 @@ import commandes.OrderSearchPage;
 public class BasePage {
     @Given("que je suis connecté à l'application, j'accède au menu et j'ouvre la page de création de commande")
     public void navigateToOrderCreationPage() {
-        Configuration.browser = "chrome";
-        Configuration.headless = true; // ou false pour visualiser
-        Configuration.browserSize = "1920x1080";
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--window-size=1920,1080");
-
-        Configuration.browserCapabilities = options;
+//        Configuration.browser = "chrome";
+//        Configuration.headless = true; // ou false pour visualiser
+//        Configuration.browserSize = "1920x1080";
+//
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--window-size=1920,1080");
+//
+//        Configuration.browserCapabilities = options;
         Configuration.timeout = 13000;
         //login_to_the_application
         LoginPage loginPage = new LoginPage();
@@ -34,15 +34,16 @@ public class BasePage {
     @Given("que je suis connecté à l'application, j'accède au menu et j'ouvre la page de création de commande en tant que magazinier dans le site 921")
     public void navigateToOrderCreationPage2() {
         Configuration.browser = "chrome";
-        Configuration.headless = true; // ou false pour visualiser
-        Configuration.browserSize = "1920x1080";
+//        Configuration.headless = true;
+//        Configuration.browserSize = "1920x1080";
+//
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--window-size=1920,1080");
+//
+//        Configuration.browserCapabilities = options;
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--window-size=1920,1080");
-
-        Configuration.browserCapabilities = options;
         Configuration.timeout = 13000;
         //login_to_the_application
         LoginPage loginPage = new LoginPage();
