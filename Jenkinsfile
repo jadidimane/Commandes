@@ -28,6 +28,7 @@ pipeline {
                 sh 'rm -rf target/allure-results/*'
                 sh 'rm -rf target/allure-report/history'
             }
+            }
         stage('Test') {
             steps {
                 bat 'mvn test'
