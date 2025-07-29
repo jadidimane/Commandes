@@ -22,8 +22,8 @@ pipeline {
         stage('Clean Allure Results & Reports') {
             steps {
                 bat '''
-                    rmdir /S /Q ${ALLURE_RESULTS_DIR}
-                    rmdir /S /Q ${ALLURE_REPORT_DIR}
+                    rmdir /S /Q "%ALLURE_RESULTS_DIR%"
+                    rmdir /S /Q "%ALLURE_REPORT_DIR%"
 
                 '''
             }
