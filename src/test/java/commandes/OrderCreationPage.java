@@ -106,6 +106,7 @@ public class OrderCreationPage extends BasePage {
         $(By.xpath("//input[@aria-label='Mode de sélection']")).sendKeys(selectionMode);
         Thread.sleep(500);
         $(By.xpath("//input[@aria-label='Mode de sélection']")).sendKeys(Keys.ENTER);
+        Thread.sleep(500);
     }
     public DetailCommandPage SetValidationButton() {
         $(validationButton).click();
