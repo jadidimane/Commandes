@@ -8,6 +8,8 @@ pipeline {
 
     environment {
         MAVEN_OPTS = "-Dmaven.test.failure.ignore=true"
+        ALLURE_RESULTS_DIR = "${env.WORKSPACE}\\allure-results"
+        ALLURE_REPORT_DIR = "${env.WORKSPACE}\\allure-report"
     }
 
     stages {
@@ -20,12 +22,8 @@ pipeline {
         stage('Clean Allure Results & Reports') {
             steps {
                 bat '''
-                REM Nettoyer les fichiers JSON dans allure-results
-                rmdir /S /Q C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\commande\\allure-results
-
-                REM Supprimer tous les fichiers JSON dans allure-report
-                rmdir /S /Q C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\commande\\allure-report
-
+                      bat "del /Q ${ALLURE_RESULTS_DIR}\\*.*"
+                       bat "del /Q ${ALLURE_REPORT_DIR}\\*.*"
                 '''
             }
         }
