@@ -24,8 +24,12 @@ pipeline {
                 bat '''
                     echo ALLURE_RESULTS_DIR = %ALLURE_RESULTS_DIR%
                     echo ALLURE_REPORT_DIR  = %ALLURE_REPORT_DIR%
-                    rmdir /S /Q "%ALLURE_RESULTS_DIR%"
-                    rmdir /S /Q "%ALLURE_REPORT_DIR%"
+                   if exist "%ALLURE_RESULTS_DIR%" (
+                       rmdir /S /Q "%ALLURE_RESULTS_DIR%"
+                   )
+                   if exist "%ALLURE_REPORT_DIR%" (
+                       rmdir /S /Q "%ALLURE_REPORT_DIR%"
+                   )
 
                 '''
             }
