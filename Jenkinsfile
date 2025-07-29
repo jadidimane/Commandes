@@ -19,16 +19,11 @@ pipeline {
                     url: 'https://github.com/jadidimane/Commandes.git'
             }
         }
-        stage('Afficher le WORKSPACE') {
-                    steps {
-                        echo "Chemin du workspace : ${env.WORKSPACE}"
-                    }
-        }
         stage('Clean Allure Results & Reports') {
             steps {
                 bat '''
-                    del /Q ${ALLURE_RESULTS_DIR}\\*.*
-                    del /Q ${ALLURE_REPORT_DIR}\\*.*
+                    rmdir /S /Q ${ALLURE_RESULTS_DIR}
+                    rmdir /S /Q ${ALLURE_REPORT_DIR}
 
                 '''
             }
