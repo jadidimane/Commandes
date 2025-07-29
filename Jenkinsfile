@@ -23,8 +23,8 @@ pipeline {
         stage('Clean Allure Results & Reports') {
             steps {
                 bat '''
-                    del /Q ${ALLURE_RESULTS_DIR}\\*.* >nul 2>&1
-                    del /Q ${ALLURE_REPORT_DIR}\\*.* >nul 2>&1
+                    del /Q ${ALLURE_RESULTS_DIR}\\*.*
+                    del /Q ${ALLURE_REPORT_DIR}\\*.*
 
                 '''
             }
