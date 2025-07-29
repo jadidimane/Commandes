@@ -10,6 +10,7 @@ pipeline {
         MAVEN_OPTS = "-Dmaven.test.failure.ignore=true"
         ALLURE_RESULTS_DIR = "${env.WORKSPACE}\\allure-results"
         ALLURE_REPORT_DIR = "${env.WORKSPACE}\\allure-report"
+        echo "Chemin du workspace : ${env.WORKSPACE}"
     }
 
     stages {
