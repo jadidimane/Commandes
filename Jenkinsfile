@@ -10,7 +10,6 @@ pipeline {
         MAVEN_OPTS = "-Dmaven.test.failure.ignore=true"
         ALLURE_RESULTS_DIR = "${env.WORKSPACE}\\allure-results"
         ALLURE_REPORT_DIR = "${env.WORKSPACE}\\allure-report"
-        echo "Chemin du workspace : ${env.WORKSPACE}"
     }
 
     stages {
@@ -19,6 +18,11 @@ pipeline {
                 git branch: 'master',
                     url: 'https://github.com/jadidimane/Commandes.git'
             }
+        }
+        stage('Afficher le WORKSPACE') {
+                    steps {
+                        echo "Chemin du workspace : ${env.WORKSPACE}"
+                    }
         }
         stage('Clean Allure Results & Reports') {
             steps {
