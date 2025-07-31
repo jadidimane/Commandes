@@ -19,21 +19,21 @@ pipeline {
                     url: 'https://github.com/jadidimane/Commandes.git'
             }
         }
-        stage('Clean Allure Results & Reports') {
-            steps {
-                bat '''
-                    echo ALLURE_RESULTS_DIR = %ALLURE_RESULTS_DIR%
-                    echo ALLURE_REPORT_DIR  = %ALLURE_REPORT_DIR%
-                   if exist "%ALLURE_RESULTS_DIR%" (
-                       rmdir /S /Q "%ALLURE_RESULTS_DIR%"
-                   )
-                   if exist "%ALLURE_REPORT_DIR%" (
-                       rmdir /S /Q "%ALLURE_REPORT_DIR%"
-                   )
-
-                '''
-            }
-        }
+//         stage('Clean Allure Results & Reports') {
+//             steps {
+//                 bat '''
+//                     echo ALLURE_RESULTS_DIR = %ALLURE_RESULTS_DIR%
+//                     echo ALLURE_REPORT_DIR  = %ALLURE_REPORT_DIR%
+//                    if exist "%ALLURE_RESULTS_DIR%" (
+//                        rmdir /S /Q "%ALLURE_RESULTS_DIR%"
+//                    )
+//                    if exist "%ALLURE_REPORT_DIR%" (
+//                        rmdir /S /Q "%ALLURE_REPORT_DIR%"
+//                    )
+//
+//                 '''
+//             }
+//         }
         stage('Build') {
             steps {
                 bat 'mvn clean install -DskipTests'
