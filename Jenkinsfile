@@ -36,12 +36,7 @@ pipeline {
         }*/
         stage('Build') {
             steps {
-                bat 'mvn clean install -DskipTests'
-            }
-        }
-        stage('Test') {
-            steps {
-                bat 'mvn -X test'
+                bat 'mvn clean test '
             }
         }
         /* stage('Download PDF') {
