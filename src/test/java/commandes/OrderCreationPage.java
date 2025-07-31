@@ -1,8 +1,6 @@
 package commandes;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.WebDriverRunner;
 import com.opencsv.exceptions.CsvValidationException;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -11,10 +9,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.junit.Assert;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
-import utility.ScreenShot;
 
 import static com.codeborne.selenide.Selenide.$;
 
